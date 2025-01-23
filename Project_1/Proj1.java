@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 /** Project 1 skeleton code.
  *  Definition: Proj1.java is a console-based, menu-driven program that contains
@@ -32,6 +33,12 @@ public class Proj1 {
     */
    public static void printMenu() {
 
+u/U: Update
+f/F: Find & Replace
+s/S: Statistics
+e/E: Exit
+-------------
+Enter your choice:
    }
 
    /**
@@ -41,9 +48,9 @@ public class Proj1 {
     * @param c the character
     * @return true if the character is special character, false otherwise.
     */
-   public static boolean isSpecial(char c) {
-    return false; //REPLACE THIS
-   }
+ public static boolean isSpecialCharacter(char c) {
+    // Check if the character is not a letter, not a digit, and not punctuation
+    return !Character.isLetterOrDigit(c) && !isPunctuation(c);
 
    /**
     * This method determines if a character is special character or not.
@@ -52,7 +59,11 @@ public class Proj1 {
     * @return true if the character is punctuation, false otherwise.
     */
    public static boolean isPunctuation(char c) {
-        return false; //REPLACE THIS
+        boolean test;
+        if(c = '!' || '?' || '.' || ',' || '\'' || '\"' || ':' || ';' || '-' || '_')
+test = true;
+   } else {
+     boolean = false
    }
 
    /**
@@ -95,8 +106,16 @@ public class Proj1 {
     * @param text the input text
     * @return the "reversed halves" string
     */
+   
    public static String reverseHalves(String text) {
-        return ""; //REPLACE THIS
+      System.out.printLn("input message")
+      Scanner x = new Scanner(System.in);
+      String message = x.nextLine();
+      int middle = message.length() /2;
+      String revFirst = message.substring(0,middle);
+      String revSecond = message.substring(middle);
+      String result = revFirst + revSecond;
+      system.out.printLn(result);
    }
 
    /**
@@ -108,9 +127,23 @@ public class Proj1 {
     * @return the scrambled string
     */
    public static String scramble(String text) {
-        return ""; //REPLACE THIS
-   }
+    if (text == null || text.isEmpty()) {
+        return text; 
+    }
 
+    StringBuilder scrambled = new StringBuilder();
+    int n = text.length();
+    
+
+    for (int i = 0; i < (n + 1) / 2; i++) {
+        scrambled.append(text.charAt(i)); 
+        if (i != n - i - 1) { 
+            scrambled.append(text.charAt(n - i - 1)); 
+        }
+    }
+    
+    return scrambled.toString();
+   }
    /**
     * This method weaves the input text by putting
     * 1st and 3rd, 2nd and 4th, 5th and 7th etc. characters
@@ -120,7 +153,22 @@ public class Proj1 {
     * @return input text weaved
     */
    public static String weave(String text){
-        return ""; //REPLACE THIS
+        if (text == null || text.isEmpty()) {
+        return text; // Return the input if it's null or empty
+    }
+
+    StringBuilder weaved = new StringBuilder(text.length());
+    int n = text.length();
+
+    // Add characters based on the weaving pattern
+    for (int i = 0; i < n; i += 2) {
+        weaved.append(text.charAt(i)); // Add the current character
+        if (i + 2 < n) { // Check if the "third" character exists
+            weaved.append(text.charAt(i + 2)); // Add the "third" character
+        }
+    }
+
+    return weaved.toString();
    }
 
    /**
